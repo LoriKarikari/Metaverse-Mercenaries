@@ -19,36 +19,25 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
-interface TodoInterface extends ethers.utils.Interface {
+interface IERC721ReceiverInterface extends ethers.utils.Interface {
   functions: {
-    "createTodo(string)": FunctionFragment;
-    "getTodos()": FunctionFragment;
+    "onERC721Received(address,address,uint256,bytes)": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: "createTodo", values: [string]): string;
-  encodeFunctionData(functionFragment: "getTodos", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "onERC721Received",
+    values: [string, string, BigNumberish, BytesLike]
+  ): string;
 
-  decodeFunctionResult(functionFragment: "createTodo", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getTodos", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "onERC721Received",
+    data: BytesLike
+  ): Result;
 
-  events: {
-    "TodoItemCreated(uint256,string,address,uint256,bool)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "TodoItemCreated"): EventFragment;
+  events: {};
 }
 
-export type TodoItemCreatedEvent = TypedEvent<
-  [BigNumber, string, string, BigNumber, boolean] & {
-    todoItemId: BigNumber;
-    text: string;
-    user: string;
-    createdAt: BigNumber;
-    completed: boolean;
-  }
->;
-
-export class Todo extends BaseContract {
+export class IERC721Receiver extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -89,113 +78,55 @@ export class Todo extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: TodoInterface;
+  interface: IERC721ReceiverInterface;
 
   functions: {
-    createTodo(
-      _text: string,
+    onERC721Received(
+      operator: string,
+      from: string,
+      tokenId: BigNumberish,
+      data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
-
-    getTodos(
-      overrides?: CallOverrides
-    ): Promise<
-      [
-        ([BigNumber, string, string, BigNumber, boolean] & {
-          todoId: BigNumber;
-          text: string;
-          user: string;
-          createdAt: BigNumber;
-          completed: boolean;
-        })[]
-      ]
-    >;
   };
 
-  createTodo(
-    _text: string,
+  onERC721Received(
+    operator: string,
+    from: string,
+    tokenId: BigNumberish,
+    data: BytesLike,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  getTodos(
-    overrides?: CallOverrides
-  ): Promise<
-    ([BigNumber, string, string, BigNumber, boolean] & {
-      todoId: BigNumber;
-      text: string;
-      user: string;
-      createdAt: BigNumber;
-      completed: boolean;
-    })[]
-  >;
-
   callStatic: {
-    createTodo(_text: string, overrides?: CallOverrides): Promise<void>;
-
-    getTodos(
+    onERC721Received(
+      operator: string,
+      from: string,
+      tokenId: BigNumberish,
+      data: BytesLike,
       overrides?: CallOverrides
-    ): Promise<
-      ([BigNumber, string, string, BigNumber, boolean] & {
-        todoId: BigNumber;
-        text: string;
-        user: string;
-        createdAt: BigNumber;
-        completed: boolean;
-      })[]
-    >;
+    ): Promise<string>;
   };
 
-  filters: {
-    "TodoItemCreated(uint256,string,address,uint256,bool)"(
-      todoItemId?: BigNumberish | null,
-      text?: null,
-      user?: null,
-      createdAt?: null,
-      completed?: null
-    ): TypedEventFilter<
-      [BigNumber, string, string, BigNumber, boolean],
-      {
-        todoItemId: BigNumber;
-        text: string;
-        user: string;
-        createdAt: BigNumber;
-        completed: boolean;
-      }
-    >;
-
-    TodoItemCreated(
-      todoItemId?: BigNumberish | null,
-      text?: null,
-      user?: null,
-      createdAt?: null,
-      completed?: null
-    ): TypedEventFilter<
-      [BigNumber, string, string, BigNumber, boolean],
-      {
-        todoItemId: BigNumber;
-        text: string;
-        user: string;
-        createdAt: BigNumber;
-        completed: boolean;
-      }
-    >;
-  };
+  filters: {};
 
   estimateGas: {
-    createTodo(
-      _text: string,
+    onERC721Received(
+      operator: string,
+      from: string,
+      tokenId: BigNumberish,
+      data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
-
-    getTodos(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    createTodo(
-      _text: string,
+    onERC721Received(
+      operator: string,
+      from: string,
+      tokenId: BigNumberish,
+      data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
-
-    getTodos(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

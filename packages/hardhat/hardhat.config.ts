@@ -17,16 +17,10 @@ const config: HardhatUserConfig = {
     hardhat: {
       chainId: 1337,
     },
-    // mumbai: {
-    //   url: 'https://rpc-mumbai.matic.today',
-    //   accounts: [process.env.PRIVATE_KEY as string],
-    // },
-    // rinkeby: {
-    //   // url: `https://eth-rinkeby.alchemyapi.io/v2/${}`,
-    //   accounts:
-    //     '',
-    //   ],
-    // },
+    rinkeby: {
+      url: `https://eth-rinkeby.alchemyapi.io/v2/${process.env.RINKEBY_ALCHEMY_KEY}`,
+      accounts: [`${process.env.RINKEBY_PRIVATE_KEY}`]
+    },
   },
   paths: {
     artifacts: '../next/artifacts',
