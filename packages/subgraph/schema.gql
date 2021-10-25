@@ -1,0 +1,14 @@
+type Todo @entity {
+  id: ID!
+  user: User!
+  text: String!
+  createdAt: Bigint!
+  completed: Boolean!
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  todos: [Todo!] @deriverdFrom(field: "user")
+  createdAt: BigInt!
+}

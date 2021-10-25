@@ -1,0 +1,16 @@
+{
+  "name": "@eth-starter/subgraph",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "graph build",
+    "codegen": "graph codegen",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ ${ORG}/${PROJECT}",
+    "create-local": "npx graph create --node http://localhost:8020/ ${ORG}/${PROJECT}",
+    "deploy-local": "npx graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ${ORG}/${PROJECT}",
+    "remove-local": "npx graph remove --node http://localhost:8020/ ${ORG}/${PROJECT}"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.20.1",
+    "@graphprotocol/graph-ts": "^0.20.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "eth-starter",
+  "private": true,
+  "scripts": {
+    "dev:next": "pnpm run dev --filter @eth-starter/next",
+    "dev:hardhat": "pnpm run dev --filter @eth-starter/hardhat",
+    "dev": "pnpm run dev --parallel",
+    "prettier": "prettier --config ./.prettierrc.yaml --write \"**/*.{js,json,md,sol,ts}\""
+	},
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "husky": "^7.0.2",
+    "prettier": "^2.4.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.18",
+    "ultra-runner": "^3.10.5"
+  },
+	"husky": {
+		"hooks": {
+			"pre-push": "pnpm run prettier"
+		}
+	}
+}
