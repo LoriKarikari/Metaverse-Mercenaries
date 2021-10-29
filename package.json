@@ -5,7 +5,7 @@
     "dev:next": "pnpm run dev --filter @eth-starter/next",
     "dev:hardhat": "pnpm run dev --filter @eth-starter/hardhat",
     "dev": "pnpm run dev --parallel",
-    "prettier": "prettier --config ./.prettierrc.yaml --write \"**/*.{js,json,md,sol,ts}\"",
+    "prettier": "prettier --config ./.prettierrc.yaml --write \"**/*.{js,json,md,sol,ts,tsx}\"",
     "deploy-test": "pnpm run deploy-test --filter @eth-starter/hardhat"
   },
   "devDependencies": {

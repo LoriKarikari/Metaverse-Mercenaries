@@ -19,7 +19,7 @@ const config: HardhatUserConfig = {
     },
     rinkeby: {
       url: `https://eth-rinkeby.alchemyapi.io/v2/${process.env.RINKEBY_ALCHEMY_KEY}`,
-      accounts: [`${process.env.RINKEBY_PRIVATE_KEY}`]
+      accounts: [`${process.env.RINKEBY_PRIVATE_KEY}`],
     },
   },
   paths: {
@@ -27,6 +27,9 @@ const config: HardhatUserConfig = {
   },
   namedAccounts: {
     deployer: 0,
+  },
+  typechain: {
+    outDir: 'types',
   },
 }
 

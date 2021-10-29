@@ -11,7 +11,16 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@contract/types": ["packages/hardhat/types"],
+      "@components/*": ["packages/next/components/*"],
+      "@hooks/*": ["packages/next/hooks/*"],
+      "@utils": ["packages/next/utils/index"],
+      "@types": ["packages/next/types/index"],
+			"@store": ["packages/next/store/index"]
+    }
   },
   "exclude": ["node_modules"]
 }

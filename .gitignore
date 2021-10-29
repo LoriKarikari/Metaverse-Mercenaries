@@ -43,3 +43,4 @@ yarn-error.log*
 cache
 artifacts
 deployments
+packages/hardhat/types

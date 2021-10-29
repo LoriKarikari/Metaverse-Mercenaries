@@ -7,6 +7,9 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import '@openzeppelin/contracts/utils/Counters.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
 
+// TODO: extra => let users mint multiple NFTs
+// TODO: extra => let users create parties
+// TODO: extra => create boss parties
 contract MyEpicGame is ERC721 {
     struct CharacterAttributes {
         uint256 characterIndex;
@@ -79,7 +82,7 @@ contract MyEpicGame is ERC721 {
             console.log('Done initializing %s w/ HP %s, img %s', c.name, c.hp, c.imageURI);
         }
         _tokenIds.increment();
-        emit CharacterNFTMinted(msg.sender, newItemId, _characterIndex);
+        //emit CharacterNFTMinted(msg.sender, newItemId, _characterIndex);
     }
 
     function mintCharacterNFT(uint256 _characterIndex) external {
@@ -113,7 +116,9 @@ contract MyEpicGame is ERC721 {
             bytes(
                 string(
                     abi.encodePacked(
-                        '{"name": "',
+                        '{"index": "',
+                        charAttributes.characterIndex,
+                        '"name": "',
                         charAttributes.name,
                         ' -- NFT #: ',
                         Strings.toString(_tokenId),
