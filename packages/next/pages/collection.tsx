@@ -10,7 +10,7 @@ export default function CollectionPage() {
   const setContract = useStore((state) => state.setContract)
   const characters = useStore((state) => state.characters)
   const setCharacters = useStore((state) => state.setCharacters)
-	const hero = useStore((state) => state.hero)
+  const hero = useStore((state) => state.hero)
 
   useEffect(() => {
     !contract && setContract()

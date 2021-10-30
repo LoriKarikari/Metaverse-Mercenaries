@@ -6,7 +6,7 @@ export default function HomePage() {
     <div className={styles.container}>
       <main className={styles.main}>
         <Link href="/collection">Collection</Link>
-				<Link href="/arena">Battle</Link>
+        <Link href="/arena">Battle</Link>
       </main>
     </div>
   )

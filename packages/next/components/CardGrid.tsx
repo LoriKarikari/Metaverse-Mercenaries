@@ -3,7 +3,7 @@ import Card from './Card'
 
 type Props = {
   heroes: Character[]
-	owned: string
+  owned: string
 }
 
 export default function CardGrid({ heroes, owned }: Props) {

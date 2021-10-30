@@ -11,7 +11,7 @@ export default function Card({ hero, owned }: Props) {
   const [showModal, setShowModal] = useState(false)
 
   function handleCardClick() {
-    owned !== hero.name || false && setShowModal(!showModal)
+    owned !== hero.name || (false && setShowModal(!showModal))
   }
 
   return (
@@ -19,11 +19,11 @@ export default function Card({ hero, owned }: Props) {
       <div className="group relative" onClick={handleCardClick}>
         <div
           className={`w-full aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75 lg:aspect-none ${
-            owned !== hero.name || false && 'opacity-40'
+            owned !== hero.name || (false && 'opacity-40')
           }`}
         >
           <img
-            src={hero.imageURI}
+            src={`https://cloudflare-ipfs.com/ipfs/${hero.imageURI}`}
             alt={hero.name}
             className="w-full h-full object-center object-cover lg:w-full lg:h-full"
           />

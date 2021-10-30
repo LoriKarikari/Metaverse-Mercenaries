@@ -18,8 +18,7 @@ export async function mintCharacterNFT(contract: Contract | undefined, character
     if (contract) {
       console.log('Minting character in progress...')
       const mintTxn = await contract.mintCharacterNFT(characterId)
-     await mintTxn.wait()
-		
+      await mintTxn.wait()
     }
   } catch (err) {
     throw err
@@ -27,11 +26,11 @@ export async function mintCharacterNFT(contract: Contract | undefined, character
 }
 
 export async function attack(contract: Contract) {
-	try {
-		const attackTxn = await contract.attackBoss();
-		await attackTxn.wait();
-		console.log('attackTxn:', attackTxn);
-	} catch(err) {
-		throw err
-	}
+  try {
+    const attackTxn = await contract.attackBoss()
+    await attackTxn.wait()
+    console.log('attackTxn:', attackTxn)
+  } catch (err) {
+    throw err
+  }
 }

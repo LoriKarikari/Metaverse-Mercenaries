@@ -14,13 +14,13 @@ export type StoreProps = {
   abi: any
   account: string
   characters: Character[]
-	hero: Character | undefined // TODO: extra => multiple heroes => party
+  hero: Character | undefined // TODO: extra => multiple heroes => party
   setAccount(): void
   setContract(): void
   setLoading(loading: boolean): void
   setCharacters(): void
-	setHero(): void
-	updateHeroHp(hp: number): any
+  setHero(): void
+  updateHeroHp(hp: number): any
 }
 
 const useStore = create<StoreProps>((set, get) => ({
@@ -30,7 +30,7 @@ const useStore = create<StoreProps>((set, get) => ({
   account: '',
   loading: true,
   characters: [],
-	hero: undefined,
+  hero: undefined,
 
   setContract: async () => {
     const { address, abi } = get()
@@ -71,12 +71,12 @@ const useStore = create<StoreProps>((set, get) => ({
     }
   },
 
-	setHero: async () => {
+  setHero: async () => {
     const { contract } = get()
     if (contract) {
       try {
         const heroTxn = await contract.checkIfUserHasNFT()
-				const hero = transformCharacterData(heroTxn) 
+        const hero = transformCharacterData(heroTxn)
         set({ hero })
       } catch (err) {
         console.error(err)
@@ -84,9 +84,12 @@ const useStore = create<StoreProps>((set, get) => ({
     }
   },
 
-	updateHeroHp: (hp: number) => set(produce(state => {
-    state.hero.hp =  hp
-  })),
+  updateHeroHp: (hp: number) =>
+    set(
+      produce((state) => {
+        state.hero.hp = hp
+      })
+    ),
 }))
 
 export default useStore

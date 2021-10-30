@@ -80,9 +80,9 @@ contract MyEpicGame is ERC721 {
 
             CharacterAttributes memory c = defaultCharacters[i];
             console.log('Done initializing %s w/ HP %s, img %s', c.name, c.hp, c.imageURI);
+					
         }
-        _tokenIds.increment();
-        //emit CharacterNFTMinted(msg.sender, newItemId, _characterIndex);
+					 _tokenIds.increment();
     }
 
     function mintCharacterNFT(uint256 _characterIndex) external {
@@ -103,6 +103,7 @@ contract MyEpicGame is ERC721 {
 
         nftHolders[msg.sender] = newItemId;
         _tokenIds.increment();
+				emit CharacterNFTMinted(msg.sender, newItemId, _characterIndex);
     }
 
     function tokenURI(uint256 _tokenId) public view override returns (string memory) {
@@ -122,7 +123,7 @@ contract MyEpicGame is ERC721 {
                         charAttributes.name,
                         ' -- NFT #: ',
                         Strings.toString(_tokenId),
-                        '", "description": "This is an NFT that lets people play in the game Metaverse Slayer!", "image": "',
+                        '", "description": "An epic NFT", "image": "ipfs://',
                         charAttributes.imageURI,
                         '", "attributes": [ { "trait_type": "Health Points", "value": ',
                         strHp,

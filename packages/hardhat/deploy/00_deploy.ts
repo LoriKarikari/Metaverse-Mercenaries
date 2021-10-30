@@ -14,14 +14,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     args: [
       ['Blademaster Samuro', 'Garrosh Hellscream', 'Xyrella'],
       [
-        'https://mercenaries-nft-clone.fra1.cdn.digitaloceanspaces.com/blademaster-samuro.webp',
-        'https://mercenaries-nft-clone.fra1.cdn.digitaloceanspaces.com/garrosh-hellscream.webp',
-        'https://mercenaries-nft-clone.fra1.cdn.digitaloceanspaces.com/xyrella.webp',
+        `Qmbvu6X2V82x5cZuqqU4rZrW5XDEgCGdRmgFeSpB8d8Yb8`,
+        `Qmeh6Yz8HCqEeDHik7sEHGLGtrSPxfoJPdQGsmc1G69BrZ`,
+				`QmZbSc9wA72dwzG5aDDBtcDGNFcwpwwo5G7a5GVGV7vTtS`,
       ],
       [66, 79, 68],
       [10, 10, 5],
       'Guldan',
-      'https://mercenaries-nft-clone.fra1.cdn.digitaloceanspaces.com/guldan.webp',
+			`QmTXFFASjQuH7NLQqQNEqqZFoYs1bAZVt4VhYnYXZujSqg`,
       82,
       4,
     ],

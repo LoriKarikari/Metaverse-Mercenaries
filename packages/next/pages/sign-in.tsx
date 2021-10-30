@@ -5,12 +5,12 @@ import { useRouter } from 'next/router'
 
 export default function SignInPage() {
   const setAccount = useStore((state) => state.setAccount)
-	const account = useStore((state) => state.account)
-	const router = useRouter()
+  const account = useStore((state) => state.account)
+  const router = useRouter()
 
-	useEffect(() => {
-		account && router.push('/')
-	}, [account])
+  useEffect(() => {
+    account && router.push('/')
+  }, [account])
 
   return (
     <div className="min-h-screen bg-[#07050A] flex">

@@ -13,12 +13,12 @@ type Props = {
 
 export default function Modal({ showModal, setShowModal, hero }: Props) {
   const contract = useStore((state) => state.contract)
-	const setHero = useStore((state) => state.setHero)
+  const setHero = useStore((state) => state.setHero)
 
-	async function handleMinting() {
-		await mintCharacterNFT(contract, hero.id)
-		await setHero()
-	}
+  async function handleMinting() {
+    await mintCharacterNFT(contract, hero.id)
+    await setHero()
+  }
 
   return (
     <AnimatePresence>
